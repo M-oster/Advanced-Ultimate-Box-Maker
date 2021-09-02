@@ -1,8 +1,8 @@
 # Advanced Ultimate-Box-Maker
 
 <img src="4-powersupply-textdemo.png" width="90%"/>
-<img src="Examples\Mini-PowerSupply\2-powersupply-front.png" width="90%"/>
-<img src="Examples\Mini-PowerSupply\5-powersupply-innerdemo.png" width="90%"/>
+<img src="2-powersupply-front.png" width="90%"/>
+<img src="5-powersupply-innerdemo.png" width="90%"/>
 
 ## Introduction
 For my projects in electronics I often need an appropriate housing. 
