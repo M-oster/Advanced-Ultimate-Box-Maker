@@ -1,209 +1,192 @@
-<a name="TOP"></a>
-# MainsBreakOutBox
-13A socket break out box with 4mm jacks to measure voltage and / or load current and earth leakage current.
+# Advanced Ultimate-Box-Maker
 
-Intended as a simple example of NopSCADlib use. Don't build it unless you understand the safety implications of working with mains electricity. In the words of
-the great [Paul Carlson](https://www.youtube.com/channel/UCU9SoQxJewrWb_3GxeteQPA), "if you are following along, you are doing so at your own risk".
+<img src="4-powersupply-textdemo.png" width="90%"/>
+<img src="Examples\Mini-PowerSupply\2-powersupply-front.png" width="90%"/>
+<img src="Examples\Mini-PowerSupply\5-powersupply-innerdemo.png" width="90%"/>
 
-In normal use the neutral jack sockets are linked with a short lead and so are the two earth jacks. Current can be safely measured using a clamp ammeter around the neutral link.
+## Introduction
+For my projects in electronics I often need an appropriate housing. 
+Commercial products have the disadvantage that they don’t fit exactly and cause a lot of work for manual drilling, cutting, adapting, etc.
+I needed a software solution for creating an individual box using a 3D-printer.
+* The software must have mainly a parametric design so that the properties of the box can be easily changed.
+* The software must have a GUI for changing the parameters so that the program code does not need to be changed.
+* Ideally the software allows to save the parameters in individual files.
+* The software with the less disadvantages I could find, was OpenSCAD.
+It is relatively easy to learn and has a so called customizer for changing and saving the parameters. But it has also a lot of restrictions to deal with. Despite this OpenSCAD was the first choice. My normally used CAD-Software “Fusion-360” is nice to use but has only a bit of a customizer.
 
-Voltage and current waveforms can be measured simultaneously with a [Mooshimeter](https://moosh.im/) CAT III multimeter connected to the bottom three jacks.
+For that reason, the decision was using OpenSCAD and I searched around which programs exists to solve my problem.
+I found the “Ultimate Box Maker” with its forks and put me on to extend the features of these programs with help of some excellent libraries.
+The result is this “Advanced Ultimate Box Maker”.
 
-Earth leakage current can be measured by connecting an AC milliampere meter between the two earth jacks. The DUT must be mounted on an insulated substrate and must not be touched
-while its earth is disconnected. Don't be tempted to float the earth of an oscilloscope this way, use a mains isolation transformer to power the DUT instead.
-Earth leakage can be measured Canadian CSA style by disconnected the neutral link from the left socket and linking the central neutral to the live.
+## Sources used in this advanced version
+Originally box designs, used libraries and license
+•	`The original design was made by “Ultimate Box Maker” `from Heartman www.thingiverse.com/thing:1264391 and http://heartygfx.blogspot.com
+•	`Great improvement to a PCB-based construction was made with the “Customizable revised Ultimate Box Maker”` from jbebel www.thingiverse.com/thing:2938921 and https://github.com/jbebel/Ultimate-Box-Maker.
+•	`The integratin of a fan-guard was inspired by the “Customizable Fan Grill Cover”`  from mightynozzle www.thingiverse.com/thing:2802474
+•	use of the Library “BOSL2” from https://github.com/revarbat/BOSL2/
+•	use of the Library “NopSCADlib” from https://github.com/nophead/NopSCADlib/
+•	`Programs are under license CC BY-NC 3.0 License and GNU General Public License 3`
 
-![Main Assembly](assemblies/main_assembled.png)
+## Requirements
+1. OpenSCAD, download it from here: https://www.openscad.org/downloads.html
+2. The library “BOSL2” from https://github.com/revarbat/BOSL2/
+3. The library “NopSCADlib” from https://github.com/nophead/NopSCADlib
+4. The actually “Advanced ultimate Box Maker” from here or thingiverse /avanced-ultimate-box-maker
 
-<span></span>
+## Installation
+•	run the downloaded OpenSCAD-file and install the exe.
+•	unpack the zip-file form BOSL2-library into the appropriate lib-directory (My Documents\OpenSCAD\libraries)
+•	do the same with library-file “NopSCADlib”
+•	The actually “Advanced ultimate Box Maker” from https://github.com/m-oster/avanced-ultimate-box-maker
+Unpack the zip-file into the directory My Documents\OpenSCAD so that all files are in the sub-directory \Advanced-Ultimate-Box-Maker
 
----
-## Table of Contents
-1. [Parts list](#Parts_list)
-1. [Base Assembly](#base_assembly)
-1. [Feet Assembly](#feet_assembly)
-1. [Mains In Assembly](#mains_in_assembly)
-1. [Main Assembly](#main_assembly)
+for checking the installation, run the main-file “Advanced-Ultimate-Box-Maker-main.scad”, and press F5 within the GUI to create the box
 
-<span></span>
-[Top](#TOP)
+## Directory structure
+the directory structure is inspired by the one from NopSCADlib.
+But the project creating features are not used here, because its too much effort in the moment to additionally extend and adapt the code.
 
----
-<a name="Parts_list"></a>
-## Parts list
-| <span style="writing-mode: vertical-rl; text-orientation: mixed;">Base</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Feet</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Mains&nbsp;In</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">Main</span> | <span style="writing-mode: vertical-rl; text-orientation: mixed;">TOTALS</span> |  |
-|---:|---:|---:|---:|---:|:---|
-|  |  |  |  | | **Vitamins** |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket blue |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket brown |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; 4mm shielded jack socket green |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; |  &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp; Ferrule for 1.5mm^2 wire - not shown |
-| &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Heatfit insert M3 |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;3&nbsp; | &nbsp;&nbsp;5&nbsp; |  &nbsp;&nbsp;8&nbsp; | &nbsp;&nbsp; Heatshrink sleeving ID 3.2mm x 15mm - not shown |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; IEC inlet for ATX |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp; Mains socket 13A |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;6&nbsp; | &nbsp;&nbsp; Nut M3 x 2.4mm nyloc |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Screw M3 cs cap x 12mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Screw M3 cs cap x 20mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp; Screw M3 dome x 10mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;8&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;10&nbsp; | &nbsp;&nbsp; Washer  M3 x 7mm x 0.5mm |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire blue 30/0.25mm strands, length 150mm - not shown |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire brown 30/0.25mm strands, length 150mm - not shown |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;1&nbsp; |  &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp; Wire green & yellow 30/0.25mm strands, length 150mm - not shown |
-| &nbsp;&nbsp;2&nbsp; | &nbsp;&nbsp;16&nbsp; | &nbsp;&nbsp;14&nbsp; | &nbsp;&nbsp;18&nbsp; | &nbsp;&nbsp;50&nbsp; | &nbsp;&nbsp;Total vitamins count |
-|  |  |  |  | | **3D printed parts** |
-| &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;foot.stl |
-| &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; |  &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;socket_box.stl |
-| &nbsp;&nbsp;1&nbsp; | &nbsp;&nbsp;4&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;.&nbsp; | &nbsp;&nbsp;5&nbsp; | &nbsp;&nbsp;Total 3D printed parts count |
+| Path | Contents |
+|:-----|:------|
+| `assemblies` | additional parts which are used for the box |
+| `docs` | Documentation files |
+| `Examples` | Example projects with its own directories|
+| `scad` | main scad file and associated scad files |
+| `stls` | STL files for making printed parts |
 
-<span></span>
-[Top](#TOP)
+## Features
+Summary of Existing Features from the original version and the improved version:
+•	Editable back- and front panel
+•	Calculation of the box size from the PCB size and margin parameters
+•	Horizontal or vertical text alignment arguments
+•	Variable panel and tab thickness separate from the box
+•	Square corners (no filet or chamfer)
+•	Parameterize all dimensions, such that the box is infinitely scalable. Doubling every parameter will double the box in all dimensions.
+•	Vents go through the floor and are scaled to fit the size of the filet.
+•	For larger filets, scale interior filets to make exterior and interior filets concentric.
+•	Decorations are optional
+•	Box fixation tabs can individually be placed on the top or bottom shell
 
----
-<a name="base_assembly"></a>
-## Base Assembly
-### Vitamins
-|Qty|Description|
-|---:|:----------|
-|2| Heatfit insert M3|
+`Added more features to this Advanced version, list of the most important ones:`
+•	Allows to integrate the electronic parts of the NopSCADlib
+•	Choice of different case feet (Hole,integrated feet, Rubber feet, Foldable feet)
+•	Choice of different threated inserts for fixation tabs
+•	Choice of different kind of PCB-feet (inserts, pillars, spacers)
+•	Holes with a recess for front- or backpanel
+•	Longholes for front- or backpanel
+•	Customizable fan-guard for the backpanel
+•	a lot of fan-sizes are integrated and their correct screw-distance is autom. choosen.
+•	Ledges on both upper edges of the box shells for better stabilization
+•	Allows to create extra holes in the bottom shell
+•	Choose predefined textfont for paneltext
+•	Frequent remarks added in the code and a lot of debug outputs can be activted
 
+With this advanced version the number of program lines has grown from round about 900 to over 1800 lines.
 
-### 3D Printed parts
+## Handling the program
+After starting OpenSCAD, you see the customizer on the right side with the various program values categorized in sections.
+Click the center symbol   to view the hole box
 
-| 1 x socket_box.stl |
-|---|
-| ![socket_box.stl](stls/socket_box.png) 
+### Sections and values
+Sections and values in the customizer on the right wondows side of the program:
+These sections include several parametric values to adapt the box to the requirements in an easy way
+and are generated from the appropriate code on the left of the editor window.
 
+### Different kind of values in the customizer
+| Value | Description |
+|:---|:---|
+|Arrays, expression begins with “a..”|Cannot be changed in customizer.MUST be changed in the editor window on the left because of the customizers restrictions.
+|Textbox| sets a text f.e.Front- or Backpanel. Change in customizer|
+|Boolean Value|activates/deactivates an option. Change in customizer|
+|Select field|selects a value out of a given list|
+|Numeric value|can be changed in customizer|
+All values, with exception of the arrays, can be saved in a configuration-file on top of the customizer window. The arrays must be saved with the complete scad-file (i.e. changing of the code)
+ 
+One member in an array is the minimum, otherwise the program throws an error.
+If the part is not used, array-members can be deactivated when On/Off-value is set to “0”.
 
+### The most important values:
+#### Section “box options”
+| Section | Description |Remark|
+|:---|:---|:---|
+|PCBDraw| draws the PCB inside the box, labels it with text of “TextOnPCB”|	Array must be edited in code window.|
+|aAddHoles|For adding holes in the bottom shell| for additional PCBs f.e.|
+|PartsDraw|Draws electr. Parts with help of the NopSCADlib.| Parts must be imported and positioned in Module “ShowElectrParts”|
+|Bar recess|Small ledge on top of Shells, can be activated/deactivated. |When Thick <2.5mm, recess is autom. deactivated because it cannot be printed|
+|sTextFonts|Selection of the font for text on panels.| List contains windows-fonts and can be changed in code window. Font names must fit to the name in windows.|
 
-### Assembly instructions
-![base_assembly](assemblies/base_assembly.png)
+#### Section “case feet”
+| Section | Description |Remark|
+|:---|:---|:---|
+|CaseFeet|Various feet can be chosen (simple hole, Rubber feet, Foldable feet in 2 sizes)| The last both are created as stl-files and can be 3D-printed.|
 
-1. Remove the support material from under the insert lugs.
-2. Place the inserts into the holes in the lugs and press home with a soldering iron with a conical bit heated to 200&deg;C.
+#### Section “Box Fixation Tabs”
+| Section | Description |Remark|
+|:---|:---|:---|
+|tab_inserts|Various kinds of fixations| simple holes for screws, threaded inserts|
 
-![base_assembled](assemblies/base_assembled.png)
+#### Section “PCB Options”
+With defining these variables the dimensions of the box are autom. calculated.
+The value “TopMargin” defines in result the hight of the box.
+The console window shows the result of the dimensions of the box.
 
-<span></span>
-[Top](#TOP)
+#### Section “PCB Feet”
+| Section | Description |Remark|
+|:---|:---|:---|
+|PCBFeet|Various kinds of PCB-feet, from simple holes for screws to holes with threaded inserts| All dimensions are autom. adapted|
+Coordinates of the 4 PCB-feet:	The console window shows the resulting distances of the PCB-feet to prove the correct values of the PCB-holes.
+If you enable “ShowExplanations” in the section ”Special Values”, the console window shows the position of the 4 PCB-feet.
 
----
-<a name="feet_assembly"></a>
-## Feet Assembly
-### Vitamins
-|Qty|Description|
-|---:|:----------|
-|4| Nut M3 x 2.4mm nyloc|
-|4| Screw M3 dome x 10mm|
-|8| Washer  M3 x 7mm x 0.5mm|
+#### Section “Frontplate Holes”
+The variables within this section define 3 kind of holes. 
+All these hole-parameters are Arrays and must be changed in the code window, not in the customizer.
+| Section | Description |Remark|
+|:---|:---|:---|
+|aFP_Holes|	Defines round holes or longholes|There are 2 diams, diam1 and diam2. If both are equal, the result is a round hole. If diam1 > diam2 the result is a longhole,If sym=0, the hole is narrower on the right side.If sym=1, the hole is narrow on left ans right side|
+|aFP_Sholes|Defines square holes
+|aFP_SHolesRecess|    	Defines a recess of (PanelThick - Recess)|If Recess is positiv, its on the outer side. If recess is negativ, its on the inner side.
 
+#### Section “Frontplate Text”
+There are 2 kind of Texts. Normal text and round text.
+All these hole-parameters are Arrays and must be changed in the code window, not in the customizer.
+| Section | Description |Remark|
+|:---|:---|:---|
+|aFP_RTexts|	Defines round round text.| Useful for labeling Poti-values|
+|aFP_STexts|	Defines normal text|
 
-### 3D Printed parts
+#### Section “Backplate Holes”, same as for Frontplate Holes
 
-| 4 x foot.stl |
-|---|
-| ![foot.stl](stls/foot.png) 
+#### Section “Backplate Text”, same as for Frontplate Text
 
+#### Section “Fan-guard settings”, only for the Backplate
+| Section | Description |Remark|
+|:---|:---|:---|
+|BP_fan_position|	Pos. of the fan-guard|can be activated by On/off-value set to “1”|
+|Fan_size_in_mm|	List of fans are integrated in an array| When selecting a size, all parameters are calculated autom.|
+|Screw_hole_diameter|	Diameter of the Fan-screw| M2, M3 or M4
+|Fan_min_border_size|	The best fitting values are predefined.| Change them carefully|
+|Fan_line_size| Size of pattern lines
+|Fan_line_space| Space between two lines of the inner pattern	
+|Number_of_support_lines|	Number of crosshairs for the fan-guard| 4 is a good value
 
+#### Section “STL-element to export”
+These Boolean values determine which part should be printed. `It makes sense to enable only one part.`
+With keys F5, then F6, you can render a part for STL-Export.
+Export the part with key F7 and save it as STL-file.
+| Section | Description |Remark|
+|:---|:---|:---|
+|TShell|	Top shell of the box|
+|BShell|	Bottom shell of the box|
+|FPanl|	 Frontpanel|
+|BPanel| Backpanel|
+|SmallParts|Small assembly-parts which should be printed|It depends what you have choosen, f.e. can be spacers for the PCB.
 
-### Sub-assemblies
-
-| 1 x base_assembly |
-|---|
-| ![base_assembled](assemblies/base_assembled_tn.png) 
-
-
-
-### Assembly instructions
-![feet_assembly](assemblies/feet_assembly.png)
-
-* Attach the four feet using 10mm M3 dome screws, washers above and below and nyloc nuts
-
-![feet_assembled](assemblies/feet_assembled.png)
-
-<span></span>
-[Top](#TOP)
-
----
-<a name="mains_in_assembly"></a>
-## Mains In Assembly
-### Vitamins
-|Qty|Description|
-|---:|:----------|
-|3| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
-|1| IEC inlet for ATX|
-|2| Nut M3 x 2.4mm nyloc|
-|2| Screw M3 cs cap x 12mm|
-|2| Washer  M3 x 7mm x 0.5mm|
-|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
-|2| Wire brown 30/0.25mm strands, length 150mm - not shown|
-|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
-
-
-### Sub-assemblies
-
-| 1 x feet_assembly |
-|---|
-| ![feet_assembled](assemblies/feet_assembled_tn.png) 
-
-
-
-### Assembly instructions
-![mains_in_assembly](assemblies/mains_in_assembly.png)
-
-1. Solder wires to the IEC terminals: -
-    * Use wire rated for 13A, e.g. 1.5mm<sup>2</sup>, the easiest source is stripping 13A rated flex.
-    * Attach one green & yellow to the earth, one blue to neutral and two brown to the live.
-    * The earth, neutral and one of the live wires should be long enough to protrude through the appropriate 4mm jack holes far enough to be able to strip and solder them to the jacks.
-    * The second brown needs to be long enough to reach the socket.
-1. Cover the the joints with heatshrink sleeving and shrink it with a hot air gun.
-1. Attach the IEC inlet using two 12mm M3 countersunk cap screws, washers and nyloc nuts on the back.
-
-![mains_in_assembled](assemblies/mains_in_assembled.png)
-
-<span></span>
-[Top](#TOP)
-
----
-<a name="main_assembly"></a>
-## Main Assembly
-### Vitamins
-|Qty|Description|
-|---:|:----------|
-|2| 4mm shielded jack socket blue|
-|1| 4mm shielded jack socket brown|
-|2| 4mm shielded jack socket green|
-|3| Ferrule for 1.5mm^2 wire - not shown|
-|5| Heatshrink sleeving ID 3.2mm x 15mm - not shown|
-|1| Mains socket 13A|
-|2| Screw M3 cs cap x 20mm|
-|1| Wire blue 30/0.25mm strands, length 150mm - not shown|
-|1| Wire green & yellow 30/0.25mm strands, length 150mm - not shown|
-
-
-### Sub-assemblies
-
-| 1 x mains_in_assembly |
-|---|
-| ![mains_in_assembled](assemblies/mains_in_assembled_tn.png) 
+#### Section “Special values”
+| Section | Description |Remark|
+|:---|:---|:---|
+|ShowExplanations|	Self defined echo-outputs in the console-window|They are defined in the “MyExplanations.scad” file. f.e.the position of the 4 PCB-feet
+|Debug|	When “1”, there is a lot of echo output from program-values|For easier assignment, the output has prefixed.<mod.>: from which module the output comes.<decription>: name of the variable or its description
 
 
 
-### Assembly instructions
-![main_assembly](assemblies/main_assembly.png)
 
-![inside](docs/inside_small.jpg)
-
-1. Put the blue wire from the IEC inlet through the bottom left jack hole, strip it, add heatshrink sleeving and solder it to one of the blue jack sockets.
-1. Put the green & yellow wire through the top left jack hole, add heatshrink sleeving and solder it to one of the green jack sockets.
-1. Put the thin brown wire the bottom right jack hole, add heatshrink sleeving and solder it to the brown jack socket.
-1. Shrink the heatshrink and screw in the three jack sockets.
-1. Solder a 13A green & yellow wire to the remaining green jack socket, long enough to reach the 13A socket. Add heashrink and fit it to the top right jack hole.
-1. Solder a 13A blue wire to the remaining blue jack socket, long enough to reach the 13A socket. Add heatshrink and fit to the bottom middle jack hole.
-1. Crimp appropriate ferrules to the three wires and connect them to the 13A socket.
-1. Screw the socket onto the top of the case using two 20mm M3 countersunk cap screws.
-
-![main_assembled](assemblies/main_assembled.png)
-
-<span></span>
-[Top](#TOP)
