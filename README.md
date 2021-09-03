@@ -158,7 +158,7 @@ All these hole-parameters are Arrays and must be changed in the code window, not
 
 #### Section “Backplate Text”, same as for Frontplate Text
 
-#### Section “Fan-guard settings”, only for the Backplate
+#### Section “Fan-guard settings”, only implemented for the Backplate
 | Section | Description |Remark|
 |:---|:---|:---|
 |BP_fan_position|	Pos. of the fan-guard|can be activated by On/off-value set to “1”|
