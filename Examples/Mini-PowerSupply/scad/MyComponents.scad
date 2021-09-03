@@ -57,6 +57,19 @@ module ShowLEDSocket(LedX, LedY) {
     }
 }
 
+module ShowBatteryMeter(Bx, By) {
+   translate([Length - (Thick + PanelThickGap),
+               Thick + PanelHorizontalGap,
+               Thick + PanelVerticalGap]) {        
+        rotate([-90, 0, 90]) {
+            translate([Bx, -By, 1]) {   // [x, -y, z]
+                meter( led_meters[2], colour = "blue", value = "lllll");
+            }
+        }
+   }
+        
+}
+
 // *************** electronic parts on Back-panel ******************
 module ShowFan(Fx, Fy, type) {
  translate([Thick + PanelThickGap + PanelThick,

@@ -12,6 +12,7 @@ include <MyPCBPillars.scad>
 include <MyInserts.scad>
 include <MyComponents.scad>
 include <MyRockers.scad>
+include <MyLed_meters.scad>
 include <MyExplanations.scad>
 
 
@@ -217,7 +218,7 @@ aFP_SHoles = [[1,50,20,74.7,39.2,0]];
 
 // - Square Holes with Recess-Margin -[ OnOff, Sx, Sy, Sl, Sw, Recess, XMargin, YMargin],[...]
 aFP_SHolesRecess = [[1,9,50,29.5,18,-1.7,1.5,2.0]];
-//                             Battery-display
+//                        Battery-display
 
 
 /* [Frontplate Text] */
@@ -1727,6 +1728,8 @@ module ShowElectrParts() {
       ShowPSU(Px=aFP_SHoles[0][1]+aFP_SHoles[0][3]/2, Py=aFP_SHoles[0][2]+aFP_SHoles[0][4]/2, type=3); // aFP_SHoles[0]
       
       ShowLEDSocket(LedX=aFP_Holes[2][1], LedY=aFP_Holes[2][2]);                 //aFP_Holes[2]
+      
+      ShowBatteryMeter(Bx=aFP_SHolesRecess[0][1]+aFP_SHolesRecess[0][3]/2, By=aFP_SHolesRecess[0][2]+aFP_SHolesRecess[0][4]/2);     // aFP_SHolesRecess[0]
    }  // endif
   
    // electr.parts on Backpanel with relative values from the position-arrays

@@ -21,17 +21,14 @@ include <NopSCADlib/utils/layout.scad>
 
 include <Myled_meters.scad>
 
-module ShowBatteryMeter(Bx, By) {
+module ShowBatteryMeter() {
         if($preview) {
-            rotate ([270,0,90]) {
-               translate([-Bx, By, -0]) {
-                  meter( led_meters[2], colour = "blue", value = "lllll");
-               }
-            }
+            hflip()
+               meter( led_meters[2], colour = "blue", value = "123");
         }
         else
             meter_bezel(led_meters[2]);
         
      }
 
-ShowBatteryMeter(Bx=0, By=0);
+ShowBatteryMeter();
