@@ -67,19 +67,19 @@ Summary of Existing Features from the original version and the improved version:
 *	Decorations are optional
 *	Box fixation tabs can individually be placed on the top or bottom shell
 
-`Added more features to this Advanced version, list of the most important ones:`
-•	Allows to integrate the electronic parts of the NopSCADlib
-•	Choice of different case feet (Hole,integrated feet, Rubber feet, Foldable feet)
-•	Choice of different threated inserts for fixation tabs
-•	Choice of different kind of PCB-feet (inserts, pillars, spacers)
-•	Holes with a recess for front- or backpanel
-•	Longholes for front- or backpanel
-•	Customizable fan-guard for the backpanel
-•	a lot of fan-sizes are integrated and their correct screw-distance is autom. choosen.
-•	Ledges on both upper edges of the box shells for better stabilization
-•	Allows to create extra holes in the bottom shell
-•	Choose predefined textfont for paneltext
-•	Frequent remarks added in the code and a lot of debug outputs can be activted
+## Added more features to this Advanced version, list of the most important ones:
+*	Allows to integrate the electronic parts of the NopSCADlib
+*	Choice of different case feet (Hole,integrated feet, Rubber feet, Foldable feet)
+*	Choice of different threated inserts for fixation tabs
+*	Choice of different kind of PCB-feet (inserts, pillars, spacers)
+*	Holes with a recess for front- or backpanel
+*	Longholes for front- or backpanel
+*	Customizable fan-guard for the backpanel
+*	a lot of fan-sizes are integrated and their correct screw-distance is autom. choosen.
+*	Ledges on both upper edges of the box shells for better stabilization
+*	Allows to create extra holes in the bottom shell
+*	Choose predefined textfont for paneltext
+*	Frequent remarks added in the code and a lot of debug outputs can be activted
 
 With this advanced version the number of program lines has grown from round about 900 to over 1800 lines.
 
