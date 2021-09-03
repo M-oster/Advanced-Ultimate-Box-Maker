@@ -20,12 +20,12 @@ The result is this “Advanced Ultimate Box Maker”.
 
 ## Sources used in this advanced version
 Originally box designs, used libraries and license
-•	`The original design was made by “Ultimate Box Maker” `from Heartman www.thingiverse.com/thing:1264391 and http://heartygfx.blogspot.com
-•	`Great improvement to a PCB-based construction was made with the “Customizable revised Ultimate Box Maker”` from jbebel www.thingiverse.com/thing:2938921 and https://github.com/jbebel/Ultimate-Box-Maker.
-•	`The integratin of a fan-guard was inspired by the “Customizable Fan Grill Cover”`  from mightynozzle www.thingiverse.com/thing:2802474
-•	use of the Library “BOSL2” from https://github.com/revarbat/BOSL2/
-•	use of the Library “NopSCADlib” from https://github.com/nophead/NopSCADlib/
-•	`Programs are under license CC BY-NC 3.0 License and GNU General Public License 3`
+*	The original design was made by “Ultimate Box Maker” from Heartman www.thingiverse.com/thing:1264391 and http://heartygfx.blogspot.com
+*	Great improvement to a PCB-based construction was made with the “Customizable revised Ultimate Box Maker”` from jbebel www.thingiverse.com/thing:2938921 and https://github.com/jbebel/Ultimate-Box-Maker.
+*	The integratin of a fan-guard was inspired by the “Customizable Fan Grill Cover”  from mightynozzle www.thingiverse.com/thing:2802474
+*	use of the Library “BOSL2” from https://github.com/revarbat/BOSL2/
+*	use of the Library “NopSCADlib” from https://github.com/nophead/NopSCADlib/
+* `Programs are under license CC BY-NC 3.0 License and GNU General Public License 3`
 
 ## Requirements
 1. OpenSCAD, download it from here: https://www.openscad.org/downloads.html
@@ -34,13 +34,13 @@ Originally box designs, used libraries and license
 4. The actually “Advanced ultimate Box Maker” from here or thingiverse /avanced-ultimate-box-maker
 
 ## Installation
-•	run the downloaded OpenSCAD-file and install the exe.
-•	unpack the zip-file form BOSL2-library into the appropriate lib-directory (My Documents\OpenSCAD\libraries)
-•	do the same with library-file “NopSCADlib”
-•	The actually “Advanced ultimate Box Maker” from https://github.com/m-oster/avanced-ultimate-box-maker
-Unpack the zip-file into the directory My Documents\OpenSCAD so that all files are in the sub-directory \Advanced-Ultimate-Box-Maker
+*	run the downloaded OpenSCAD-file and install the exe.
+*	unpack the zip-file form BOSL2-library into the appropriate lib-directory (My Documents\OpenSCAD\libraries)
+*	do the same with library-file “NopSCADlib”
+*	The actually “Advanced ultimate Box Maker” from https://github.com/m-oster/avanced-ultimate-box-maker
+Unpack the zip-file into the directory My Documents\OpenSCAD so that all files are in the sub-directory \Advanced-Ultimate-Box-Maker.
 
-for checking the installation, run the main-file “Advanced-Ultimate-Box-Maker-main.scad”, and press F5 within the GUI to create the box
+For checking of the installation, run the main-file “Advanced-Ultimate-Box-Maker-main.scad”, and press F5 within the GUI to create the basic box.
 
 ## Directory structure
 the directory structure is inspired by the one from NopSCADlib.
@@ -56,16 +56,16 @@ But the project creating features are not used here, because its too much effort
 
 ## Features
 Summary of Existing Features from the original version and the improved version:
-•	Editable back- and front panel
-•	Calculation of the box size from the PCB size and margin parameters
-•	Horizontal or vertical text alignment arguments
-•	Variable panel and tab thickness separate from the box
-•	Square corners (no filet or chamfer)
-•	Parameterize all dimensions, such that the box is infinitely scalable. Doubling every parameter will double the box in all dimensions.
-•	Vents go through the floor and are scaled to fit the size of the filet.
-•	For larger filets, scale interior filets to make exterior and interior filets concentric.
-•	Decorations are optional
-•	Box fixation tabs can individually be placed on the top or bottom shell
+*	Editable back- and front panel
+*	Calculation of the box size from the PCB size and margin parameters
+*	Horizontal or vertical text alignment arguments
+*	Variable panel and tab thickness separate from the box
+*	Square corners (no filet or chamfer)
+*	Parameterize all dimensions, such that the box is infinitely scalable. Doubling every parameter will double the box in all dimensions.
+*	Vents go through the floor and are scaled to fit the size of the filet.
+*	For larger filets, scale interior filets to make exterior and interior filets concentric.
+*	Decorations are optional
+*	Box fixation tabs can individually be placed on the top or bottom shell
 
 `Added more features to this Advanced version, list of the most important ones:`
 •	Allows to integrate the electronic parts of the NopSCADlib
