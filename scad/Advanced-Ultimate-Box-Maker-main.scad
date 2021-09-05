@@ -64,7 +64,7 @@ in order to have the appropriate flexibility.
 
 ////////////////////////////////////////////////////////////////////
 extended by m-oster
-http://github.com/m-oster/Advanced-Ultimate-Box-Maker
+http://github.com/M-oster/Advanced-Ultimate-Box-Maker
 
 ________________________________________________________
 
@@ -663,9 +663,9 @@ module tab(ScrewHole, TabThick) {
                         //circle(r=4*ScrewHole, $fn=6);    // generate tab as hexagon
                         circle(r=3.8*ScrewHole, $fn=6);    // generate slightly smaller tab as hexagon
                         if (Debug) echo("----------------------");
-                        if (Debug)echo("mod. tab: ScrewHole from circle:",ScrewHole);
+                        if (Debug)echo("sub tab: ScrewHole from circle:",ScrewHole);
                         if (!SnapTabs) {
-                            if (Debug)echo("mod. tab: translate:",0,ScrewHole*2,0);
+                            if (Debug)echo("sub tab: translate:",0,ScrewHole*2,0);
                             translate([0, ScrewHole*2, 0]) {
                                 circle(d=ScrewHole, $fn=100);     // hole in tab when not SnapTabs choosen
                             }
@@ -718,11 +718,11 @@ module tab(ScrewHole, TabThick) {
 */
 //module Tabs(top=0) {
 module Tabs(top=0, tab_hole, tab_thick) {
-   if (Debug) echo("mod. Tabs before: tabs:",tab_hole=tab_hole, tab_thick=tab_thick);
+   if (Debug) echo("sub Tabs before: tabs:",tab_hole=tab_hole, tab_thick=tab_thick);
    if (Debug) echo();
    ScrewHole=tab_hole;
    TabThick=tab_thick;
-   if (Debug) echo("mod. Tabs after: tabs:",ScrewHole=ScrewHole, TabThick=TabThick);
+   if (Debug) echo("sub Tabs after: tabs:",ScrewHole=ScrewHole, TabThick=TabThick);
     color(Couleur1) {
         if (BLTab == top) { //tab back-left
             translate([MountInset + ScrewHole*4, 0, 0]) {  // MountInset=Thick*3+PanelThick+PanelThickGap*2+ScrewHole*4 --> X-position of mounting holes and tabs
@@ -758,7 +758,7 @@ module Tabs(top=0, tab_hole, tab_thick) {
     or a semispherical indention for snap tabs.
 */
 module hole(BoxHole, ScrewHole) {
-    if (Debug) echo("mod. hole: ",BoxHole=BoxHole, ScrewHole=ScrewHole, SnapTabs=SnapTabs);
+    if (Debug) echo("sub hole: ",BoxHole=BoxHole, ScrewHole=ScrewHole, SnapTabs=SnapTabs);
     if (SnapTabs) {
         translate([0, -Thick, Height/2 - 2*ScrewHole]) {
             sphere(d=ScrewHole, $fn=100);       // Sphere in the box-part when using snaptabs
@@ -785,10 +785,10 @@ module hole(BoxHole, ScrewHole) {
             bottom.
 */
 module Holes(top=0,tab_box_hole,tab_hole) {
-   if (Debug) echo("mod. Holes before:", tab_box_hole=tab_box_hole, tab_hole=tab_hole);
+   if (Debug) echo("sub Holes before:", tab_box_hole=tab_box_hole, tab_hole=tab_hole);
    BoxHole=tab_box_hole;
    ScrewHole= tab_hole;
-   if (Debug) echo("mod. Holes after:", BoxHole=BoxHole, ScrewHole=ScrewHole);
+   if (Debug) echo("sub Holes after:", BoxHole=BoxHole, ScrewHole=ScrewHole);
       
     color(Couleur1) {
         if (BRTab != top) {
@@ -825,7 +825,7 @@ module Holes(top=0,tab_box_hole,tab_hole) {
     module with the % modifier which makes this module translucent and only
     viewed in preview mode.
 */
-module PCB(FootHeight) {   // added footheight in dependence of kind of feet
+module PCB(FootHeight) {   // added footheight in dependency of kind of feet
     translate([0, 0, FootHeight]) {
         cube([PCBLength, PCBWidth, PCBThick]);
         translate([PCBLength/2, PCBWidth/2, PCBThick]) {
@@ -845,7 +845,7 @@ module PCB(FootHeight) {   // added footheight in dependence of kind of feet
 */
 
 module foot(top=0, inner_diam, outer_diam, foot_height) {
-    if (Debug) echo("mod. foot params:", inner_diam=inner_diam, outer_diam=outer_diam, foot_height=foot_height);
+    if (Debug) echo("sub foot params:", inner_diam=inner_diam, outer_diam=outer_diam, foot_height=foot_height);
     FootHole = inner_diam;  // must be set on top, because in the if clause the var is gone
     FootDia = outer_diam;
     FootHeight = foot_height;
@@ -911,7 +911,7 @@ module foot(top=0, inner_diam, outer_diam, foot_height) {
 */
 
 module Feet(top=0, inner_diam, outer_diam, foot_height) {
-    if (Debug) echo("mod. Feet params:", inner_diam=inner_diam, outer_diam=outer_diam, foot_height=foot_height);
+    if (Debug) echo("sub Feet params:", inner_diam=inner_diam, outer_diam=outer_diam, foot_height=foot_height);
     translate([BackEdgeMargin + Thick + PanelThick + PanelThickGap*2, LeftEdgeMargin + Thick, Thick]) {
         if (Screwless || !top ) {
             translate([Foot1X, Foot1Y]) {
@@ -961,7 +961,7 @@ module DrawPCB(FootHeight) {  // separation of drawing the PCB from the PCBFeet,
   }
 
 module PCBFeetHoles(diam) {    // create holes dependend of kind of PCB-holes
-      if(Debug) echo("mod. PCBFeetHoles: diam:",diam);
+      if(Debug) echo("sub PCBFeetHoles: diam:",diam);
       if (Debug) echo("Mod. PCBFeetHoles: HoleDiam+CutoutMargin:",diam + CutoutMargin);
       if (Debug) echo();
       translate([BackEdgeMargin + Thick + PanelThick + PanelThickGap*2,
@@ -988,7 +988,7 @@ module AdditionalHoles() {
       if (AddHoles[0]) {
          for (i=[1:len(AddHoles)-1]) {
             //                                        On-Off       Xpos,             Ypos,             diameter
-            if(Debug) echo("mod. AdditionalHole:", OnOff=OnOff, xPos=AddHoles[1], yPos=AddHoles[2], diam=AddHoles[3]);
+            if(Debug) echo("sub AdditionalHole:", OnOff=OnOff, xPos=AddHoles[1], yPos=AddHoles[2], diam=AddHoles[3]);
             if(Debug) echo("Mod. AdditionalHole: HoleDiam+CutoutMargin:",AddHoles[3] + CutoutMargin);
             if(Debug) echo();
                translate([GeneralMarginX, GeneralMarginY, Thick]) {
@@ -1167,8 +1167,8 @@ module DrawPCB_Pillars() {
 
 module DrawPCB_Spacers() {
    
-  if(Debug) echo("mod. DrawPCB_Spacers: PCBFeet-pcb_spacer_offset:",PCBFeet-pcb_spacer_offset);
-  if(Debug) echo("mod. DrawPCB_Spacers: height:", Thick + pcb_spacer_height/2);
+  if(Debug) echo("sub DrawPCB_Spacers: PCBFeet-pcb_spacer_offset:",PCBFeet-pcb_spacer_offset);
+  if(Debug) echo("sub DrawPCB_Spacers: height:", Thick + pcb_spacer_height/2);
    if(($preview)  || (SmallParts)) {
       translate([BackEdgeMargin + Thick + PanelThick + PanelThickGap*2, LeftEdgeMargin + Thick, Thick]){
          translate([Foot1X, Foot1Y, pcb_spacer_height/2]) {
@@ -1183,7 +1183,7 @@ module DrawPCB_Spacers() {
          translate([Foot4X, Foot4Y, pcb_spacer_height/2]) {
             tubing_ext(tubings[PCBFeet-pcb_spacer_offset]);
         }
-      }
+      } // end translate
    } // endif $preview
 
 }
@@ -1216,11 +1216,11 @@ module TopShell() {
                 
                 // Handling of PCBFeet
                 if (tab_inserts<=1) {
-                    if(Debug) echo("mod. TopShell: box_hole tab_insert<=1:",BoxHole);
+                    if(Debug) echo("sub TopShell: box_hole tab_insert<=1:",BoxHole);
                     Holes(top=1, tab_box_hole=BoxHole, tab_hole=ScrewHole); // def. using screws:(0), EXPERIMENTAL snap-tabs:(1)
                 }
                 if (tab_inserts >1) {
-                    if(Debug) echo("mod. TopShell: tab_box_hole tab_insert>1:",tab_box_hole +CutoutMargin);
+                    if(Debug) echo("sub TopShell: tab_box_hole tab_insert>1:",tab_box_hole +CutoutMargin);
                     Holes(top=1, tab_box_hole = tab_box_hole +CutoutMargin, tab_hole=tab_hole);   // overwrite hole-values with screw-diam. of choosen insert
                 } 
           } // end of difference
@@ -1235,7 +1235,7 @@ module TopShell() {
     and various sorts of PCB-feet.
 */
 module BottomShell() {
-   if(Debug) echo("Debug mod. BottomShell:",PCBFeet=PCBFeet, FootHole=FootHole, pcb_spacer_offset=pcb_spacer_offset, tubings_PCBFeet=tubings[PCBFeet-pcb_spacer_offset][3]);
+   if(Debug) echo("Debug sub BottomShell:",PCBFeet=PCBFeet, FootHole=FootHole, pcb_spacer_offset=pcb_spacer_offset, tubings_PCBFeet=tubings[PCBFeet-pcb_spacer_offset][3]);
   
     difference() {
         union() {
@@ -1245,7 +1245,7 @@ module BottomShell() {
                Tabs(tab_hole=ScrewHole, tab_thick=TabThick); // def. values of customizer
             }
             if (tab_inserts >1) {
-               if(Debug) echo("mod. BottomShell tab:",tab_hole=tab_hole, tab_thick=tab_thick);
+               if(Debug) echo("sub BottomShell tab:",tab_hole=tab_hole, tab_thick=tab_thick);
                Tabs(tab_hole=tab_hole, tab_thick=tab_thick+0.5); // tab_thick= length of insert+ add. margin
             }
             
@@ -1270,11 +1270,11 @@ module BottomShell() {
         } // end union
         //handling of Box-Holes for tabs, depends on choosen tab-inserts, diameter and tab-thick must be treated differently
         if (tab_inserts<=1) {
-           if(Debug) echo("mod. BottomShell: tab_box_hole tab_insert <=1:",BoxHole);
+           if(Debug) echo("sub BottomShell: tab_box_hole tab_insert <=1:",BoxHole);
            Holes(tab_box_hole=BoxHole, tab_hole=ScrewHole);       // def. using screws (0) and EXPERIMENTAL snap-tabs (1)
         }
         if (tab_inserts >1) {
-           if(Debug) echo("mod. BottomShell: tab_box_hole tab_insert >1:",tab_box_hole);
+           if(Debug) echo("sub BottomShell: tab_box_hole tab_insert >1:",tab_box_hole);
            Holes(tab_box_hole = tab_box_hole, tab_hole=tab_hole);   // overwriting BoxHole with screw-diam. of choosen insert
         }
 
@@ -1344,18 +1344,6 @@ module CylinderHole(OnOff, Cx, Cy, Cdia) {
     }
 }
 
-module CylinderHoleRecess(OnOff, Cx, Cy, Cdia, CRecess) {
-    if (OnOff) {
-        if(Debug) echo("mod. CylinderHoleRecess:", Cx=Cx, Cy=Cy, Cdia=Cdia + CutoutMargin*2);
-        translate([Cx, Cy, 0-eps]) {
-           linear_extrude(height=PanelThick) {
-            //circle(d=Cdia + CutoutMargin, $fn=100);
-            circle(d=Cdia + CutoutMargin*2, $fn=100);
-          //    cylinder(h=PanelThick, d=Cdia+CutoutMargin*2, $fn=Resolution);
-           }
-        }
-    }
-}
 
 /*  Square Hole module
 

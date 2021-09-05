@@ -1344,18 +1344,6 @@ module CylinderHole(OnOff, Cx, Cy, Cdia) {
     }
 }
 
-module CylinderHoleRecess(OnOff, Cx, Cy, Cdia, CRecess) {
-    if (OnOff) {
-        if(Debug) echo("mod. CylinderHoleRecess:", Cx=Cx, Cy=Cy, Cdia=Cdia + CutoutMargin*2);
-        translate([Cx, Cy, 0-eps]) {
-           linear_extrude(height=PanelThick) {
-            //circle(d=Cdia + CutoutMargin, $fn=100);
-            circle(d=Cdia + CutoutMargin*2, $fn=100);
-          //    cylinder(h=PanelThick, d=Cdia+CutoutMargin*2, $fn=Resolution);
-           }
-        }
-    }
-}
 
 /*  Square Hole module
 
