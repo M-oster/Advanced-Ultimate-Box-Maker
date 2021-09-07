@@ -31,7 +31,7 @@ Originally box designs, used libraries and license
 1. OpenSCAD, download it from here: https://www.openscad.org/downloads.html
 2. The library “BOSL2” from https://github.com/revarbat/BOSL2/
 3. The library “NopSCADlib” from https://github.com/nophead/NopSCADlib
-4. The actually “Advanced ultimate Box Maker” from here or thingiverse /avanced-ultimate-box-maker
+4. The actually “Advanced ultimate Box Maker” from here or thingiverse https://www.thingiverse.com/thing:4947863
 
 ## Installation
 *	run the downloaded OpenSCAD-file and install the exe.
