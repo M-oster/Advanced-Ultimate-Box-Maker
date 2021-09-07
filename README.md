@@ -88,9 +88,9 @@ After starting OpenSCAD, you see the customizer on the right side with the vario
 Click the center symbol   to view the hole box
 
 ### Sections and values
-Sections and values in the customizer on the right wondows side of the program:
+Sections and values in the customizer on the right windows side of the program:
 These sections include several parametric values to adapt the box to the requirements in an easy way
-and are generated from the appropriate code on the left of the editor window.
+and are generated from the appropriate code on the left side of the editor window.
 
 ### Different kind of values in the customizer
 | Value | Description |
