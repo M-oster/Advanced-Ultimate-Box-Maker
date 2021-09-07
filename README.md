@@ -49,7 +49,7 @@ But the project creating features are not used here, because its too much effort
 | Path | Contents |
 |:-----|:------|
 | `assemblies` | additional parts which are used for the box |
-| `docs` | Documentation files |
+| `docs` | Documentation files, Schematics |
 | `Examples` | Example projects with its own directories|
 | `scad` | main scad file and associated scad files |
 | `stls` | STL files for making printed parts |
