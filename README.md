@@ -22,7 +22,7 @@ The result is this “Advanced Ultimate Box Maker”.
 Originally box designs, used libraries and license
 *	The original design was made by “Ultimate Box Maker” from Heartman www.thingiverse.com/thing:1264391 and http://heartygfx.blogspot.com
 *	Great improvement to a PCB-based construction was made with the “Customizable revised Ultimate Box Maker”` from jbebel www.thingiverse.com/thing:2938921 and https://github.com/jbebel/Ultimate-Box-Maker.
-*	The integratin of a fan-guard was inspired by the “Customizable Fan Grill Cover”  from mightynozzle www.thingiverse.com/thing:2802474
+*	The integration of a fan-guard was inspired by the “Customizable Fan Grill Cover”  from mightynozzle www.thingiverse.com/thing:2802474
 *	use of the Library “BOSL2” from https://github.com/revarbat/BOSL2/
 *	use of the Library “NopSCADlib” from https://github.com/nophead/NopSCADlib/
 * `Programs are under license CC BY-NC 3.0 License and GNU General Public License 3`
