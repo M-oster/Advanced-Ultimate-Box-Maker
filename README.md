@@ -37,7 +37,7 @@ Originally box designs, used libraries and license
 *	run the downloaded OpenSCAD-file and install the exe.
 *	unpack the zip-file form BOSL2-library into the appropriate lib-directory (My Documents\OpenSCAD\libraries)
 *	do the same with library-file “NopSCADlib”
-*	The actually “Advanced ultimate Box Maker” from https://github.com/m-oster/avanced-ultimate-box-maker
+*	The actually “Advanced ultimate Box Maker” from here
 Unpack the zip-file into the directory My Documents\OpenSCAD so that all files are in the sub-directory \Advanced-Ultimate-Box-Maker.
 
 For checking of the installation, run the main-file “Advanced-Ultimate-Box-Maker-main.scad”, and press F5 within the GUI to create the basic box.
