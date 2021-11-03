@@ -39,6 +39,7 @@ Originally box designs, used libraries and license
 *	do the same with library-file “NopSCADlib”
 *	The actually “Advanced ultimate Box Maker” from here.
 Unpack the zip-file into the directory My Documents\OpenSCAD so that all files are in the sub-directory \Advanced-Ultimate-Box-Maker.
+You have to create the directories without the Extension "-master" which github adds to the zip-files.
 
 For checking of the installation, run the main-file “Advanced-Ultimate-Box-Maker-main.scad”, and press F5 within the GUI to create the basic box.
 

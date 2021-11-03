@@ -1,9 +1,4 @@
-include <BOSL2/common.scad>
-include <BOSL2/vectors.scad>
-include <BOSL2/arrays.scad>
-include <BOSL2/math.scad>
-include <BOSL2/strings.scad>
-
+include <BOSL2/std.scad>
 
 include <NopSCADlib/core.scad>
 
