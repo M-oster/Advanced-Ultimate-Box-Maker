@@ -278,7 +278,7 @@ FPanL = 1; // [0:No, 1:Yes]
 BPanL = 1; // [0:No, 1:Yes]
 // - Panel holes and text
 PanelFeatures = 1; // [0:No, 1:Yes]
-//- Small Parts for 3D-Print, when choosen (PCB-Spacer, BatteryHolder)
+//- Small Parts for 3D-Print, when choosen (PCB-Spacer)
 SmallParts = 0;  // [0:No, 1:Yes]
 
 
@@ -1761,10 +1761,6 @@ if ((PCBFeet >= pcb_spacer_offset) && (PCBFeet <=23) && (SmallParts)) {   // STL
    DrawPCB_Spacers();
 }
 
-// for 3D-print of small parts (BatteryHolder)
-if  (SmallParts) {
-   DrawBattHolder();
-}
 
 
 
